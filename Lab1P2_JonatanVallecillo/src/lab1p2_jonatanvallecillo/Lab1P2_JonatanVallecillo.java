@@ -11,13 +11,13 @@ public class Lab1P2_JonatanVallecillo {
     static Random rand = new Random();
     static Scanner leer = new Scanner(System.in);
     static Scanner leer2 = new Scanner(System.in);
-    static ArrayList <Integer> Medianas = new ArrayList <Integer>(); 
+    static ArrayList <Integer> Medianas = new ArrayList <Integer>();   //ArrayList que se usará
     
     public static void main(String[] args) {
         
         int size = 0;
         
-        do{
+        do{ //Ciclo do-while donde se valida que el número sea mayor que 4 e impar
             System.out.print("Ingrese el tamano de matriz deseado: ");
             size = leer.nextInt();
         }while(size < 5 || (size % 2 == 0));
@@ -25,7 +25,7 @@ public class Lab1P2_JonatanVallecillo {
         int [][] matriz = new int [size][size];
         int numrandom = 0;
         
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < size; i++){ //Generación de los números randoms
             for(int j = 0; j < size; j++){
                 numrandom = rand.nextInt(10);
                 matriz[i][j] = numrandom;
@@ -36,13 +36,12 @@ public class Lab1P2_JonatanVallecillo {
         System.out.println("");
         
         int filas = -1;
-        int [] medianas = new int [size];
         bubbleSort(matriz, size, filas, Medianas);
         
         bubbleSortArrayList(size);
         
         System.out.println("\nArreglo de medianas ordenados: ");
-        for(int i = 0; i < Medianas.size(); i++){
+        for(int i = 0; i < Medianas.size(); i++){ //Impresión de la ArrayList de medianas
             System.out.print("["+Medianas.get(i)+"] ");
         }
         
@@ -67,7 +66,7 @@ public class Lab1P2_JonatanVallecillo {
             
             int cambio = 0;
             
-            for(int i = 0; i < size; i++){
+            for(int i = 0; i < size; i++){ //Ordenamiento de las filas, utilizando un arreglo temporal
                 for(int j = 0; j < size; j++){
                     if(arreglo[j] > arreglo[i]){
                         cambio = arreglo[i];
@@ -81,7 +80,7 @@ public class Lab1P2_JonatanVallecillo {
                 System.out.println("Matriz ordenada");
             }
             
-            for(int i = 0; i < size; i++){
+            for(int i = 0; i < size; i++){ //Impresión de la matriz ordenada
                 temporal[filas][i] = arreglo[i];
                 System.out.print("["+temporal[filas][i]+"] ");
             }
