@@ -31,18 +31,23 @@ public class Lab1P2_JonatanVallecillo {
         }
         
         ImprimirMatriz(matriz, size);
+        System.out.println("");
         
-        int filas = 0;
-        matriz = bubbleSort(matriz, size, filas);
+        int filas = -1;
+        int [] medianas = new int [size];
+        bubbleSort(matriz, size, filas, medianas);
         
-        ImprimirMatriz(matriz, size);
     }
     
-    public static int [][] bubbleSort(int [][] matriz, int size, int filas){
+    public static void bubbleSort(int [][] matriz, int size, int filas, int [] medianas){
+        
+        int mediana = size/2;
+        filas ++;
         int [] arreglo = new int [size];
         int [][] temporal = new int [size][size];
         
-        do{
+        if(filas < size){
+            //System.out.println(filas);
             for(int i = 0; i < size; i++){
                 arreglo[i] = matriz[filas][i];
             }
@@ -51,7 +56,7 @@ public class Lab1P2_JonatanVallecillo {
             
             for(int i = 0; i < size; i++){
                 for(int j = 0; j < size; j++){
-                    if(arreglo[j] < arreglo[i]){
+                    if(arreglo[j] > arreglo[i]){
                         cambio = arreglo[i];
                         arreglo[i] = arreglo[j];
                         arreglo[j] = cambio;
@@ -59,25 +64,25 @@ public class Lab1P2_JonatanVallecillo {
                 }
             }
             
+            if(filas == 0){
+                System.out.println("Matriz ordenada");
+            }
+            
             for(int i = 0; i < size; i++){
                 temporal[filas][i] = arreglo[i];
+                System.out.print("["+temporal[filas][i]+"] ");
             }
             
-            for(int i = 0; i < size; i++){
-                System.out.print(arreglo[i]+" ");
-            }
+            medianas[filas] = arreglo[mediana];
             
-            System.out.println("");
+            System.out.println();
             
-            filas ++;
-            
-            if (filas < size){
-                bubbleSort(matriz, size, filas);
-            }
-            
-        }while(filas < size);
+            bubbleSort(matriz, size, filas, medianas);
+        }
         
-        return temporal;
+        for(int i = 0; i < size; i++){
+            System.out.print("["+medianas[i]+"] ");
+        }
     }
     
     public static void ImprimirMatriz(int [][] matriz, int size){
