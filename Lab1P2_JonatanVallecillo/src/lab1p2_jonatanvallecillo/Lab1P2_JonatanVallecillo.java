@@ -52,7 +52,7 @@ public class Lab1P2_JonatanVallecillo {
         
     }
     
-    public static void bubbleSort(int [][] matriz, int size, int filas, ArrayList <Integer> Medianas){
+    public static void bubbleSort(int [][] matriz, int size, int filas, ArrayList <Integer> Medianas){ //Método bubbleSort del ordenamiento de las filas
         
         int mediana = size/2;
         filas ++;
@@ -90,26 +90,26 @@ public class Lab1P2_JonatanVallecillo {
             
             System.out.println();
             
-            bubbleSort(matriz, size, filas, Medianas);
+            bubbleSort(matriz, size, filas, Medianas); //Recursiva aplicada
         }
     }
     
-    public static void bubbleSortArrayList(int size){
+    public static void bubbleSortArrayList(int size){ //Método bubbleSort de ArrayList para la ordenación de las medianas
         int cambio = 0;
         int cambio2 = 0;
         for(int i = 0; i < size; i++){
-                for(int j = 0; j < size; j++){
-                    if(Medianas.get(j) > Medianas.get(i)){
-                        cambio = Medianas.get(i);
-                        cambio2 = Medianas.get(j);
-                        Medianas.set(i, cambio2);
-                        Medianas.set(j, cambio);
-                    }
+            for(int j = 0; j < size; j++){ 
+                if(Medianas.get(j) > Medianas.get(i)){ //Ordenamiento ArrayList
+                    cambio = Medianas.get(i);
+                    cambio2 = Medianas.get(j);
+                    Medianas.set(i, cambio2);
+                    Medianas.set(j, cambio);
                 }
             }
+        }
     }
     
-    public static void ImprimirMatriz(int [][] matriz, int size){
+    public static void ImprimirMatriz(int [][] matriz, int size){ //Método de impresión de la matriz
         System.out.println("\nMatriz: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
