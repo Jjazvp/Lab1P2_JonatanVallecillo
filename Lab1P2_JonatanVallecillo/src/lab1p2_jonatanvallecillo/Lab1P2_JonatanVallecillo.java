@@ -37,7 +37,7 @@ public class Lab1P2_JonatanVallecillo {
         
         int filas = -1;
         int [] medianas = new int [size];
-        bubbleSort(matriz, size, filas, medianas, Medianas);
+        bubbleSort(matriz, size, filas, Medianas);
         
         bubbleSortArrayList(size);
         
@@ -52,7 +52,7 @@ public class Lab1P2_JonatanVallecillo {
         
     }
     
-    public static void bubbleSort(int [][] matriz, int size, int filas, int [] medianas, ArrayList <Integer> Medianas){
+    public static void bubbleSort(int [][] matriz, int size, int filas, ArrayList <Integer> Medianas){
         
         int mediana = size/2;
         filas ++;
@@ -90,7 +90,7 @@ public class Lab1P2_JonatanVallecillo {
             
             System.out.println();
             
-            bubbleSort(matriz, size, filas, medianas, Medianas);
+            bubbleSort(matriz, size, filas, Medianas);
         }
     }
     
@@ -118,10 +118,4 @@ public class Lab1P2_JonatanVallecillo {
             System.out.println("");
         }
     }
-    
-    
-    /*git clone
-    git add -A
-    git commit -m "El asunto del commit"
-    git push*/
 }
