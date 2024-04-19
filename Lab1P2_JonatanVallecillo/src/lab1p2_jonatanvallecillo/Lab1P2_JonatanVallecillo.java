@@ -1,5 +1,6 @@
 package lab1p2_jonatanvallecillo;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class Lab1P2_JonatanVallecillo {
     static Random rand = new Random();
     static Scanner leer = new Scanner(System.in);
     static Scanner leer2 = new Scanner(System.in);
+    static ArrayList <Integer> Medianas = new ArrayList <Integer>(); 
     
     public static void main(String[] args) {
         
@@ -35,11 +37,20 @@ public class Lab1P2_JonatanVallecillo {
         
         int filas = -1;
         int [] medianas = new int [size];
-        bubbleSort(matriz, size, filas, medianas);
+        bubbleSort(matriz, size, filas, medianas, Medianas);
+        
+        System.out.println("\nArreglo de medianas ordenados: ");
+        for(int i = 0; i < Medianas.size(); i++){
+            System.out.print("["+Medianas.get(i)+"] ");
+        }
+        
+        int medianaMediana = Medianas.size() / 2;
+        
+        System.out.println("\nMediana de las medianas: "+Medianas.get(medianaMediana));
         
     }
     
-    public static void bubbleSort(int [][] matriz, int size, int filas, int [] medianas){
+    public static void bubbleSort(int [][] matriz, int size, int filas, int [] medianas, ArrayList <Integer> Medianas){
         
         int mediana = size/2;
         filas ++;
@@ -73,15 +84,11 @@ public class Lab1P2_JonatanVallecillo {
                 System.out.print("["+temporal[filas][i]+"] ");
             }
             
-            medianas[filas] = arreglo[mediana];
+            Medianas.add(arreglo[mediana]);
             
             System.out.println();
             
-            bubbleSort(matriz, size, filas, medianas);
-        }
-        
-        for(int i = 0; i < size; i++){
-            System.out.print("["+medianas[i]+"] ");
+            bubbleSort(matriz, size, filas, medianas, Medianas);
         }
     }
     
