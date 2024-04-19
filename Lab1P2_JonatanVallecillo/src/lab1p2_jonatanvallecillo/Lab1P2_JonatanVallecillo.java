@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Lab1P2_JonatanVallecillo {
+    
+    //Fila 2, silla 2
 
     static Random rand = new Random();
     static Scanner leer = new Scanner(System.in);
@@ -28,6 +30,57 @@ public class Lab1P2_JonatanVallecillo {
             }
         }
         
+        ImprimirMatriz(matriz, size);
+        
+        int filas = 0;
+        matriz = bubbleSort(matriz, size, filas);
+        
+        ImprimirMatriz(matriz, size);
+    }
+    
+    public static int [][] bubbleSort(int [][] matriz, int size, int filas){
+        int [] arreglo = new int [size];
+        int [][] temporal = new int [size][size];
+        
+        do{
+            for(int i = 0; i < size; i++){
+                arreglo[i] = matriz[filas][i];
+            }
+            
+            int cambio = 0;
+            
+            for(int i = 0; i < size; i++){
+                for(int j = 0; j < size; j++){
+                    if(arreglo[j] < arreglo[i]){
+                        cambio = arreglo[i];
+                        arreglo[i] = arreglo[j];
+                        arreglo[j] = cambio;
+                    }
+                }
+            }
+            
+            for(int i = 0; i < size; i++){
+                temporal[filas][i] = arreglo[i];
+            }
+            
+            for(int i = 0; i < size; i++){
+                System.out.print(arreglo[i]+" ");
+            }
+            
+            System.out.println("");
+            
+            filas ++;
+            
+            if (filas < size){
+                bubbleSort(matriz, size, filas);
+            }
+            
+        }while(filas < size);
+        
+        return temporal;
+    }
+    
+    public static void ImprimirMatriz(int [][] matriz, int size){
         System.out.println("\nMatriz: ");
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
