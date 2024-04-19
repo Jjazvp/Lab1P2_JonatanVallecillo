@@ -14,8 +14,9 @@ public class Lab1P2_JonatanVallecillo {
     static ArrayList <Integer> Medianas = new ArrayList <Integer>();   //ArrayList que se usará
     
     public static void main(String[] args) {
-        
-        int size = 0;
+        int continuar = 1;
+        do{
+            int size = 0;
         
         do{ //Ciclo do-while donde se valida que el número sea mayor que 4 e impar
             System.out.print("Ingrese el tamano de matriz deseado: ");
@@ -35,7 +36,7 @@ public class Lab1P2_JonatanVallecillo {
         ImprimirMatriz(matriz, size);
         System.out.println("");
         
-        int filas = -1;
+        int filas = 0;
         bubbleSort(matriz, size, filas, Medianas);
         
         bubbleSortArrayList(size);
@@ -48,18 +49,25 @@ public class Lab1P2_JonatanVallecillo {
         int medianaMediana = Medianas.size() / 2;
         
         System.out.println("\nMediana de las medianas: "+Medianas.get(medianaMediana));
-        
+            
+            
+            System.out.println("Desea continuar? Ingrese 1 si desea seguir, otro numero si no desea: ");
+            continuar = leer.nextInt();
+            
+            for(int i = 0; i < Medianas.size();){
+                Medianas.remove(i);
+            }
+            
+        }while(continuar == 1);
     }
     
     public static void bubbleSort(int [][] matriz, int size, int filas, ArrayList <Integer> Medianas){ //Método bubbleSort del ordenamiento de las filas
         
         int mediana = size/2;
-        filas ++;
         int [] arreglo = new int [size];
         int [][] temporal = new int [size][size];
         
         if(filas < size){
-            //System.out.println(filas);
             for(int i = 0; i < size; i++){
                 arreglo[i] = matriz[filas][i];
             }
@@ -89,6 +97,7 @@ public class Lab1P2_JonatanVallecillo {
             
             System.out.println();
             
+            filas ++;
             bubbleSort(matriz, size, filas, Medianas); //Recursiva aplicada
         }
     }
