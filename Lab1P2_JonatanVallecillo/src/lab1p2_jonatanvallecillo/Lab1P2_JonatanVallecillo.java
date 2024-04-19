@@ -39,6 +39,8 @@ public class Lab1P2_JonatanVallecillo {
         int [] medianas = new int [size];
         bubbleSort(matriz, size, filas, medianas, Medianas);
         
+        bubbleSortArrayList(size);
+        
         System.out.println("\nArreglo de medianas ordenados: ");
         for(int i = 0; i < Medianas.size(); i++){
             System.out.print("["+Medianas.get(i)+"] ");
@@ -90,6 +92,21 @@ public class Lab1P2_JonatanVallecillo {
             
             bubbleSort(matriz, size, filas, medianas, Medianas);
         }
+    }
+    
+    public static void bubbleSortArrayList(int size){
+        int cambio = 0;
+        int cambio2 = 0;
+        for(int i = 0; i < size; i++){
+                for(int j = 0; j < size; j++){
+                    if(Medianas.get(j) > Medianas.get(i)){
+                        cambio = Medianas.get(i);
+                        cambio2 = Medianas.get(j);
+                        Medianas.set(i, cambio2);
+                        Medianas.set(j, cambio);
+                    }
+                }
+            }
     }
     
     public static void ImprimirMatriz(int [][] matriz, int size){
